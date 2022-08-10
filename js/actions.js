@@ -24,7 +24,7 @@ const waitTest = async (parameters) => {
   });
 };
 
-const saludo = (parameters) => {
+const greeting = (parameters) => {
   let randomColor = ((Math.random() * 0xffffff) << 0)
     .toString(16)
     .padStart(6, '0');
@@ -37,7 +37,7 @@ const sendAlert = (parameters) => {
   createLine(`(${colors.success}):Success`);
 };
 
-const colores = (parameters) => {
+const getColor = (parameters) => {
   createLine(`Muesta del color (${parameters[0]}):${parameters[0]}`);
 };
 
@@ -45,7 +45,14 @@ const clearConsole = () => {
   output.textContent = '';
 };
 
-const operacion = (parameters) => {
+const listCommands = () => {
+  createLine(`(${colors.warning}): Try to use this commands:`);
+  listOfCommands.forEach((c) => {
+    createLine(`(${colors.normal}):${c.name}`);
+  });
+};
+
+const mathOperation = (parameters) => {
   try {
     createLine(`(${colors.success}):Resultado ${eval(parameters[0])}`);
   } catch (error) {

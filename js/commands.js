@@ -1,26 +1,31 @@
-const listCommands = [
+const listOfCommands = [
+  {
+    name: 'help',
+    action: listCommands,
+    params: [],
+  },
   {
     name: 'clear',
     action: clearConsole,
     params: [],
   },
   {
-    name: 'saludo',
-    action: saludo,
-    params: [validation.isString, validation.isNumber],
+    name: 'greeting',
+    action: greeting,
+    params: [validation.isString, validation.isColor],
   },
   {
     name: 'color',
-    action: colores,
+    action: getColor,
     params: [validation.isColor],
   },
   {
-    name: 'operacion',
-    action: operacion,
+    name: 'math',
+    action: mathOperation,
     params: [validation.allCharacters],
   },
   {
-    name: 'alerta',
+    name: 'alert',
     action: sendAlert,
     params: [validation.isStrBtwQuotes],
   },

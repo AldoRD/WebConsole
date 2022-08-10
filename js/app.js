@@ -18,6 +18,10 @@ let responseMessage = '';
 
 let indexHistory = -1;
 
+window.addEventListener('load', () => {
+  createLine(`(${colors.normal}):Type 'help' to get help.`);
+});
+
 window.addEventListener('keydown', (e) => {
   if (e.key == 'c' && isCtrlPress && isWaitingUser) {
     isWaitingUser = false;
@@ -81,7 +85,7 @@ function getSuggestions() {
   let string = input.value.slice(0, input.value.length - word.length);
   actualSuggestions = [];
 
-  listCommands.forEach((s) => {
+  listOfCommands.forEach((s) => {
     if (s.name.startsWith(word)) actualSuggestions.push(s.name);
   });
 
@@ -136,9 +140,9 @@ function executeCommand() {
 
 function verifyCommandExist() {
   let commandoSplit = splitForQuotesAndSpaces(input.value);
-  for (let i = 0; i < listCommands.length; i++) {
-    if (commandoSplit[0] === listCommands[i].name) {
-      actualCommand = listCommands[i];
+  for (let i = 0; i < listOfCommands.length; i++) {
+    if (commandoSplit[0] === listOfCommands[i].name) {
+      actualCommand = listOfCommands[i];
       actualConsoleMessage = `> (${colors.command}):${commandoSplit.shift()}`;
       actualParams = commandoSplit;
       return true;

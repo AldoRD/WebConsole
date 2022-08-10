@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.console {
+  width: 95%;
+  height: 95%;
+  border-radius: 10px;
+  border: 5px solid #fff;
+  background: #313131;
+}
+
+.console__header {
+  width: 100%;
+  height: 5%;
+  padding: 0px 35px;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.console__header .buttons {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(245, 204, 32);
+}
+
+.console__header .buttons::before {
+  position: absolute;
+  left: -20px;
+  content: ' ';
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(238, 68, 68);
+}
+
+.console__header .buttons::after {
+  position: absolute;
+  left: 20px;
+  content: ' ';
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(74, 222, 125);
+}
+
+.console__history {
+  width: 100%;
+  height: 85%;
+  padding: 20px;
+}
+
+.console__output {
+  width: 100%;
+  height: 100%;
+  color: #6d6b6b;
+  font-size: 24px;
+  font-weight: 700;
+  overflow-y: scroll;
+  overflow-wrap: break-word;
+}
+
+.console__output::-webkit-scrollbar {
+  width: 0;
+}
+
+.console__input {
+  position: relative;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.console__input .separator {
+  position: absolute;
+  top: 0px;
+  height: 3px;
+  width: 98%;
+  background-color: #fff;
+}
+
+.console__input input {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.console__input .console__autocomplete {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  user-select: none;
+}

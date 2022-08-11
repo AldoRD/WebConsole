@@ -34,4 +34,34 @@ const listOfCommands = [
     action: waitTest,
     params: [],
   },
+  {
+    name: 'circle',
+    action: transformToCircle,
+    params: [],
+  },
+  {
+    name: 'rect',
+    action: transformToRect,
+    params: [],
+  },
+  {
+    name: 'move',
+    action: moveShape,
+    params: [validation.isDirection],
+  },
+  {
+    name: 'transform',
+    action: transformColor,
+    params: [validation.isColor],
+  },
+  {
+    name: 'rotate',
+    action: rotateShape,
+    params: [validation.isNumber],
+  },
+  {
+    name: 'light',
+    action: toggleLight,
+    params: [],
+  },
 ];

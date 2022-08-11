@@ -1,3 +1,4 @@
+const consoleRoot = document.getElementById('console');
 const output = document.getElementById('output');
 const input = document.getElementById('input');
 const suggestions = document.getElementById('suggestions');
@@ -5,6 +6,7 @@ const suggestions = document.getElementById('suggestions');
 let isCorrectCommand = false;
 let isWaitingUser = false;
 let isCtrlPress = false;
+let isShowing = false;
 
 let actualParams = [];
 let historyArray = [];
@@ -12,6 +14,7 @@ let actualSuggestions = [];
 
 let actualCallback = null;
 let actualCommand = null;
+let animation = null;
 
 let actualConsoleMessage = '';
 let responseMessage = '';
@@ -23,15 +26,16 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('keydown', (e) => {
-  if (e.key == 'c' && isCtrlPress && isWaitingUser) {
+  if (e.key === 'c' && isCtrlPress && isWaitingUser) {
     isWaitingUser = false;
     createLine(`(${colors.error}):Cancel`);
   }
-  if (e.key == 'l' && isCtrlPress) {
+  if (e.key === 'l' && isCtrlPress) {
     e.preventDefault();
     output.textContent = '';
   }
-  if (e.key == 'Control') isCtrlPress = true;
+  if (e.key === 'Control') isCtrlPress = true;
+  if (e.key === 'Escape') toggleConsole();
 });
 
 window.addEventListener('keyup', (e) => {
@@ -54,14 +58,41 @@ input.addEventListener('input', () => {
   }
 });
 
+function toggleConsole() {
+  animation && animation.remove(consoleRoot);
+  if (isShowing)
+    animation = anime({
+      targets: consoleRoot,
+      width: '0%',
+      padding: 0,
+      fontSize: 0,
+      easing: 'linear',
+      duration: 300,
+      begin: () => (isShowing = false),
+    });
+  else
+    animation = anime({
+      targets: consoleRoot,
+      width: '50%',
+      padding: 10,
+      fontSize: 16,
+      duration: 2000,
+      begin: () => (isShowing = true),
+    });
+
+  setCursorEnd();
+}
+
 function autocompleteHistory(e) {
   if (historyArray.length <= 0) return;
   if (e.key === 'ArrowUp') {
+    suggestions.value = '';
     indexHistory = indexHistory <= 0 ? 0 : indexHistory - 1;
     input.value = historyArray[indexHistory];
     setCursorEnd();
   }
   if (e.key === 'ArrowDown') {
+    suggestions.value = '';
     indexHistory =
       indexHistory >= historyArray.length
         ? historyArray.length

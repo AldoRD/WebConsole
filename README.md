@@ -1,3 +1,3 @@
 # Prototipe WebConsole
 
-Create with Javascript Vanilla
+Create with Javascript and AnimeJS

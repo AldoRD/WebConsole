@@ -25,10 +25,10 @@ const waitTest = async (parameters) => {
 };
 
 const greeting = (parameters) => {
-  let randomColor = ((Math.random() * 0xffffff) << 0)
-    .toString(16)
-    .padStart(6, '0');
-  let string = `Hola (#${randomColor}):${parameters[0]}`;
+  // let randomColor = ((Math.random() * 0xffffff) << 0)
+  //   .toString(16)
+  //   .padStart(6, '0');
+  let string = `Hola (${parameters[1]}):${parameters[0]}`;
   createLine(string);
 };
 

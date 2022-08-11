@@ -4,36 +4,45 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Console V3</title>
+    <title>WebConsole</title>
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
     <div class="container">
-      <div class="console">
-        <div class="console__header">
-          <div class="buttons"></div>
-        </div>
-        <div class="console__history">
-          <div id="output" class="console__output"></div>
-        </div>
-        <div class="console__input">
-          <div class="separator"></div>
-          <input
-            id="input"
-            type="text"
-            placeholder="Typing something..."
-            autocomplete="off"
-          />
-          <input
-            type="text"
-            id="suggestions"
-            class="console__autocomplete"
-            autocomplete="off"
-            tabindex="-1"
-          />
+      <main>
+        <div class="box"></div>
+      </main>
+      <aside><h2>Try press 'esc' to see the magic.</h2></aside>
+
+      <div id="console" class="console__container">
+        <div class="console">
+          <div class="console__header">
+            <div class="buttons"></div>
+          </div>
+          <div class="console__history">
+            <div id="output" class="console__output"></div>
+          </div>
+          <div class="console__input">
+            <div class="separator"></div>
+            <input
+              id="input"
+              type="text"
+              placeholder="Typing something..."
+              autocomplete="off"
+            />
+            <input
+              type="text"
+              id="suggestions"
+              class="console__autocomplete"
+              autocomplete="off"
+              tabindex="-1"
+            />
+          </div>
         </div>
       </div>
     </div>
+    <script src="./utilities/anime.min.js"></script>
+    <script src="./js/animations.js"></script>
     <script src="./js/settings.js"></script>
     <script src="./js/validation.js"></script>
     <script src="./js/actions.js"></script>

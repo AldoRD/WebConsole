@@ -41,6 +41,10 @@ const validation = {
     let pattern = /^"{1}.*?"{1}$/;
     return pattern.test(str);
   },
+  isDirection(str) {
+    let pattern = /^up|right|down|left$/;
+    return pattern.test(str);
+  },
   allCharacters(str) {
     let pattern = /^.*$/;
     return pattern.test(str);
